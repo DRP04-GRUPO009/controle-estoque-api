@@ -2,12 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 
 UNIT_TYPE_CHOICES = (
-    ('U', 'Unidade'),
-    ('M', 'Metro'),
-    ('P', 'Pacote'),
-    ('B', 'Bloco'),
-    ('C', 'Caixa'),
-    ('R', 'Rolo')
+    (1, 'Unidade'),
+    (2, 'Metro'),
+    (3, 'Pacote'),
+    (4, 'Bloco'),
+    (5, 'Caixa'),
+    (6, 'Rolo')
 )
 
 class Product(models.Model):
