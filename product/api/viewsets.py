@@ -1,6 +1,6 @@
 from rest_framework import generics
 from product.api import serializers
-from product.api.permissions import ReadOnlyUnlessStaff
+from controle_estoque_api.api.permissions import ReadOnlyUnlessStaff
 from product import models
 
 class ProductListAPIView(generics.ListAPIView):
