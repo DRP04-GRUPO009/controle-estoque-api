@@ -30,7 +30,9 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'drf_yasg',
     'corsheaders',
-    'product'
+    'product',
+    'stock',
+    'school_unit'
 ]
 
 MIDDLEWARE = [
