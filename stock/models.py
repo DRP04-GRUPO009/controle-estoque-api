@@ -3,7 +3,7 @@ from product.models import Product
 from school_unit.models import SchoolUnit
 
 class Stock(models.Model):
-    school_unit = models.OneToOneField(SchoolUnit, related_name='stock', on_delete=models.PROTECT, verbose_name='Unidade Escolar')
+    school_unit = models.OneToOneField(SchoolUnit, related_name='stock', on_delete=models.CASCADE, verbose_name='Unidade Escolar')
 
     class Meta:
         verbose_name='Estoque'
@@ -13,7 +13,7 @@ class Stock(models.Model):
         return f'Estoque - {self.school_unit}'
 
 class StockItem(models.Model):
-    stock = models.ForeignKey(Stock, related_name='items', on_delete=models.CASCADE, verbose_name='Estoque')
+    stock = models.ForeignKey(Stock, related_name='items', on_delete=models.PROTECT, verbose_name='Estoque')
     product = models.ForeignKey(Product, on_delete=models.PROTECT, verbose_name='Produto')
     quantity = models.IntegerField(verbose_name='Quantidade')
 

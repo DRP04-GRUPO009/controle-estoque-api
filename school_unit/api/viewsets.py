@@ -1,6 +1,6 @@
 from rest_framework import generics
 from controle_estoque_api.api.permissions import ReadOnlyUnlessStaff
-from school_unit.api.serializers import SchoolUnitSerializer
+from school_unit.api.serializers import SchoolUnitSerializer, SchoolUnitWriteSerializer
 from ..models import SchoolUnit
 
 class SchoolUnitListAPIView(generics.ListAPIView):
@@ -14,12 +14,12 @@ class SchoolUnitRetrieveApiView(generics.RetrieveAPIView):
     permission_classes = [ReadOnlyUnlessStaff]
 
 class SchoolUnitCreateApiView(generics.CreateAPIView):
-    serializer_class = SchoolUnitSerializer
+    serializer_class = SchoolUnitWriteSerializer
     queryset = SchoolUnit.objects.all()
     permission_classes = [ReadOnlyUnlessStaff]
 
 class SchoolUnitUpdateApiView(generics.UpdateAPIView):
-    serializer_class = SchoolUnitSerializer
+    serializer_class = SchoolUnitWriteSerializer
     queryset = SchoolUnit.objects.all()
     permission_classes = [ReadOnlyUnlessStaff]
 

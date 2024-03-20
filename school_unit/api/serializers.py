@@ -8,3 +8,8 @@ class SchoolUnitSerializer(serializers.ModelSerializer):
     class Meta:
         model = SchoolUnit
         fields = ['name', 'stock']
+
+class SchoolUnitWriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SchoolUnit
+        fields = ['name']
