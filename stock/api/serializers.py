@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from product.api.serializers import ProductSerializer
-from stock.models import StockItem, Stock
+from stock.models import StockItem, Stock, StockTransfer
 
 class StockItemSerializer(serializers.ModelSerializer):
     product = ProductSerializer()
@@ -20,3 +20,9 @@ class StockSerializer(serializers.ModelSerializer):
     class Meta:
         model = Stock
         fields = '__all__'
+
+class StockTransferWriteSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = StockTransfer
+        fields = ['product', 'quantity', 'origin_school_unit', 'target_school_unit']
