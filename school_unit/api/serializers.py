@@ -12,4 +12,4 @@ class SchoolUnitSerializer(serializers.ModelSerializer):
 class SchoolUnitWriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = SchoolUnit
-        fields = ['name']
+        fields = ['name', 'main_unit']
