@@ -1,4 +1,5 @@
 import datetime
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -9,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-xl7fro!1ce)65$4*#ycnsoz3l$(l=5l%iw*zyp388&sln*ltor'
+SECRET_KEY = os.environ.get('CE_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -73,8 +74,12 @@ WSGI_APPLICATION = 'controle_estoque_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('CE_DB_NAME'),
+        'USER': os.environ.get('CE_DB_USERNAME'),
+        'PASSWORD': os.environ.get('CE_DB_PASSWORD'),
+        'HOST': '172.17.0.2',  # Se o contêiner estiver sendo executado localmente
+        'PORT': '3306',
     }
 }
 

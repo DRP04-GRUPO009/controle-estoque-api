@@ -2,7 +2,6 @@ from django.db import models
 from product.models import Product
 from school_unit.models import SchoolUnit
 from django.contrib.auth.models import User
-from django.db import transaction
 from django.core.exceptions import ValidationError
 
 class Stock(models.Model):
