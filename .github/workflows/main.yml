@@ -4,18 +4,13 @@ on:
   workflow_dispatch:
 
 env: 
-  CE_SECRET_KEY: ${{ variables.CE_SECRET_KEY }}
+  CE_SECRET_KEY: ${{ secrets.CE_SECRET_KEY }}
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
-    steps:
-    - name: Teste
-      run: | 
-        echo $CE_SECRET_KEY
-        echo ${{ variables.CE_SECRET_KEY }}
-      
+    steps:    
     - name: Checkout repository
       uses: actions/checkout@v2
 
