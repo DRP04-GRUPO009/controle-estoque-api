@@ -27,9 +27,9 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     
     steps:
-    - name: Verificar host e permissões do MySQL
+    - name: Teste
       run: |
-        mysql -h ${{ SECRETS.CE_DB_HOSTNAME }} -u root -p"{{ secrets.CE_DB_PASSWORD }}" -e "SHOW GRANTS FOR 'root'@'${{ SECRETS.CE_DB_HOSTNAME }}';"
+         mysql -h ${{ SECRETS.CE_DB_HOSTNAME }} --port 3306 -u root -p ${{ secrets.CE_DB_PASSWORD }} -e 'CREATE DATABASE IF NOT EXISTS ${{ secrets.CE_DB_NAME }};'
         
     - name: Checkout repository
       uses: actions/checkout@v2
