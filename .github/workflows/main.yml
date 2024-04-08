@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: Teste
-      run: echo ${{ vars.CE_SECRET_KEY }}
+      run: echo $CE_SECRET_KEY
       
     - name: Checkout repository
       uses: actions/checkout@v2
