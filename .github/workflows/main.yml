@@ -15,21 +15,12 @@ env:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
-    services:
-      mysql:
-        image: mysql:latest
-        env:
-          MYSQL_ROOT_PASSWORD: ${{ secrets.CE_DB_PASSWORD }}
-          MYSQL_DATABASE: ${{ secrets.CE_DB_NAME }}
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     
     steps:
-    - name: Teste
+    - name: Start MySQL
       run: |
-         mysql -h ${{ SECRETS.CE_DB_HOSTNAME }} --port 3306 -u root -p ${{ secrets.CE_DB_PASSWORD }} -e 'CREATE DATABASE IF NOT EXISTS ${{ secrets.CE_DB_NAME }};'
+        sudo /etc/init.d/mysql start
+        mysql -e "CREATE DATABASE IF NOT EXISTS $CE_DB_HOSTNAME;" -u$CE_DB_USERNAME -p$CE_DB_PASSWORD
         
     - name: Checkout repository
       uses: actions/checkout@v2
