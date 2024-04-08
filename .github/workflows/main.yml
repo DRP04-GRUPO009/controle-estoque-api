@@ -1,16 +1,32 @@
 name: Deploy to Azure
 
-
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 env: 
   CE_SECRET_KEY: ${{ secrets.CE_SECRET_KEY }}
+  CE_DB_USERNAME: ${{ secrets.CE_DB_USERNAME }}
+  CE_DB_PASSWORD: ${{ secrets.CE_DB_PASSWORD }}
+  CE_DB_NAME: ${{ secrets.CE_DB_NAME }}
+  CE_DB_HOSTNAME: ${{ SECRETS.CE_DB_HOSTNAME }}
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:latest
+        env:
+          MYSQL_DATABASE: ${{ secrets.CE_DB_NAME }}
+          MYSQL_USER: ${{ secrets.CE_DB_USERNAME }}
+          MYSQL_PASSWORD: ${{ secrets.CE_DB_PASSWORD }}
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    
     steps:    
     - name: Checkout repository
       uses: actions/checkout@v2
