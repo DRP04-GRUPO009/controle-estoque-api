@@ -29,7 +29,7 @@ jobs:
     steps:
     - name: Verificar host e permissões do MySQL
       run: |
-        mysql -h ${{ SECRETS.CE_DB_HOSTNAME }} -u root -p"${{ secrets.CE_DB_PASSWORD }}" -e "CREATE USER '${{ secrets.CE_DB_USERNAME }}'@'${{ SECRETS.CE_DB_HOSTNAME }}' IDENTIFIED BY '${{ secrets.CE_DB_USER_PASSWORD }}';"
+        mysql -h ${{ SECRETS.CE_DB_HOSTNAME }} -u root -p"{{ secrets.CE_DB_PASSWORD }}" -e "SHOW GRANTS FOR 'root'@'${{ SECRETS.CE_DB_HOSTNAME }}';"
         
     - name: Checkout repository
       uses: actions/checkout@v2
