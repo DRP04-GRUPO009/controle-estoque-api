@@ -78,7 +78,7 @@ DATABASES = {
         'NAME': os.environ.get('CE_DB_NAME'),
         'USER': os.environ.get('CE_DB_USERNAME'),
         'PASSWORD': os.environ.get('CE_DB_PASSWORD'),
-        'HOST': '172.17.0.2',  # Se o contêiner estiver sendo executado localmente
+        'HOST': os.environ.get('CE_DB_HOSTNAME'),
         'PORT': '3306',
     }
 }
