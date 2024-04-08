@@ -29,7 +29,7 @@ jobs:
     steps:
     - name: Verificar host e permissões do MySQL
       run: |
-        mysql -h 172.18.0.1 -u ${{ secrets.CE_DB_USERNAME }} -p"{{ secrets.CE_DB_PASSWORD }}" -e "SHOW GRANTS FOR '${{ secrets.CE_DB_USERNAME }}'@'172.18.0.1';"
+        mysql -h 172.18.0.1 -u ${{ secrets.CE_DB_USERNAME }} -p"${{ secrets.CE_DB_PASSWORD }}" -e "SHOW GRANTS FOR '${{ secrets.CE_DB_USERNAME }}'@'172.18.0.1';"
         
     - name: Checkout repository
       uses: actions/checkout@v2
