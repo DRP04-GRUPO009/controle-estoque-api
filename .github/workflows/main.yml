@@ -6,7 +6,7 @@ on:
       - main
 
 env: 
-  CE_SECRET_KEY: ${{ Envronment Keys.CE_SECRET_KEY }}
+  CE_SECRET_KEY: ${{ variables.CE_SECRET_KEY }}
 
 jobs:
   build-and-deploy:
@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: Teste
-      run: echo ${{ Envronment Keys.CE_SECRET_KEY }} echo teste
+      run: echo ${{ variables.CE_SECRET_KEY }} echo teste
       
     - name: Checkout repository
       uses: actions/checkout@v2
