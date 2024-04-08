@@ -17,10 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Start MySQL
-      run: |
-        sudo /etc/init.d/mysql start
-        mysql -e "CREATE DATABASE IF NOT EXISTS $CE_DB_HOSTNAME;" -u$CE_DB_USERNAME -p$CE_DB_PASSWORD
+    - uses: mirromutth/mysql-action@v1.1
+      with:
+          mysql database: ${{ secrets.CE_DB_NAME }} # Optional, default value is "test". The specified database which will be create
+          mysql root password: ${{ secrets.CE_DB_PASSWORD }} # Required if "mysql user" is empty, default is empty. The root superuser password
         
     - name: Checkout repository
       uses: actions/checkout@v2
