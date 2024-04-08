@@ -6,7 +6,7 @@ on:
       - main
 
 env: 
-  CE_SECRET_KEY: ${{ vars.CE_SECRET_KEY }}
+  CE_SECRET_KEY: ${{ variables.CE_SECRET_KEY }}
 
 jobs:
   build-and-deploy:
@@ -14,7 +14,9 @@ jobs:
 
     steps:
     - name: Teste
-      run: echo $CE_SECRET_KEY
+      run: | 
+        echo $CE_SECRET_KEY
+        echo ${{ variables.CE_SECRET_KEY }}
       
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -26,8 +28,6 @@ jobs:
 
     - name: Install dependencies
       run: |
-        echo ${{ vars.CE_SECRET_KEY }}
-        echo "teste"
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
