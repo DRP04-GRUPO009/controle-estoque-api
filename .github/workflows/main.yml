@@ -10,7 +10,7 @@ env:
   CE_DB_USERNAME: ${{ secrets.CE_DB_USERNAME }}
   CE_DB_PASSWORD: ${{ secrets.CE_DB_PASSWORD }}
   CE_DB_NAME: ${{ secrets.CE_DB_NAME }}
-  CE_DB_HOSTNAME: ${{ SECRETS.CE_DB_HOSTNAME }}
+  CE_DB_HOSTNAME: ${{ secrets.CE_DB_HOSTNAME }}
 
 jobs:
   build-and-deploy:
