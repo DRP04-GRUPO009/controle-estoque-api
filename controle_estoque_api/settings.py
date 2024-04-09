@@ -76,7 +76,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.environ.get('CE_DB_NAME'),
-        'USER': os.environ.get('CE_DB_USERNAME'),
+        'USER': 'root',
         'PASSWORD': os.environ.get('CE_DB_PASSWORD'),
         'HOST': os.environ.get('CE_DB_HOSTNAME'),
         'PORT': '3306',
