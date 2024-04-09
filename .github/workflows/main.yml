@@ -6,11 +6,11 @@ on:
       - main
 
 env: 
-  CE_SECRET_KEY: ${{ secrets.CE_SECRET_KEY }}
-  CE_DB_USERNAME: ${{ secrets.CE_DB_USERNAME }}
-  CE_DB_PASSWORD: ${{ secrets.CE_DB_PASSWORD }}
-  CE_DB_NAME: ${{ secrets.CE_DB_NAME }}
-  CE_DB_HOSTNAME: ${{ secrets.CE_DB_HOSTNAME }}
+  CE_SECRET_KEY: ${{ vars.CE_SECRET_KEY }}
+  CE_DB_USERNAME: ${{ vars.CE_DB_USERNAME }}
+  CE_DB_PASSWORD: ${{ vars.CE_DB_PASSWORD }}
+  CE_DB_NAME: ${{ vars.CE_DB_NAME }}
+  CE_DB_HOSTNAME: ${{ vars.CE_DB_HOSTNAME }}
 
 jobs:
   build-and-deploy:
@@ -19,8 +19,8 @@ jobs:
     steps:
     - uses: mirromutth/mysql-action@v1.1
       with:
-          mysql database: ${{ secrets.CE_DB_NAME }} # Optional, default value is "test". The specified database which will be create
-          mysql root password: ${{ secrets.CE_DB_PASSWORD }} # Required if "mysql user" is empty, default is empty. The root superuser password
+          mysql database: ${{ vars.CE_DB_NAME }} # Optional, default value is "test". The specified database which will be create
+          mysql root password: ${{ vars.CE_DB_PASSWORD }} # Required if "mysql user" is empty, default is empty. The root superuser password
         
     - name: Checkout repository
       uses: actions/checkout@v2
