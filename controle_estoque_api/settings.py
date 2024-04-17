@@ -15,7 +15,7 @@ SECRET_KEY = os.environ.get('CE_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://brunopaluco.pythonanywhere.com/',]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -121,6 +121,7 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
 ]
+
 CORS_ALLOW_CREDENTIALS = True
 
 # Internationalization
