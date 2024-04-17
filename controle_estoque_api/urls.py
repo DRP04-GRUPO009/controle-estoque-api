@@ -16,13 +16,13 @@ schema_view = get_schema_view(
    openapi.Info(
       title="Controle Estoque API",
       default_version='v1',
-      description="Test description",
-      terms_of_service="https://www.google.com/policies/terms/",
+      description="Documentação para API de controle estoque",
+      terms_of_service="",
       contact=openapi.Contact(email="ronaldverissimo@hotmail.com"),
       license=openapi.License(name="MIT"),
    ),
    public=True,
-   permission_classes=(permissions.AllowAny,),
+   permission_classes=[permissions.AllowAny],
 )
 
 urlpatterns = [
