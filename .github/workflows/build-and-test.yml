@@ -19,8 +19,8 @@ jobs:
     steps:
     - uses: mirromutth/mysql-action@v1.1
       with:
-          mysql database: ${{ vars.CE_DB_NAME }} # Optional, default value is "test". The specified database which will be create
-          mysql root password: ${{ vars.CE_DB_PASSWORD }} # Required if "mysql user" is empty, default is empty. The root superuser password
+          mysql database: ${{ vars.CE_DB_NAME }}
+          mysql root password: ${{ vars.CE_DB_PASSWORD }}
         
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -44,3 +44,7 @@ jobs:
     - name: Collect static files
       run: |
         python manage.py collectstatic --noinput
+
+    - name: Run unit tests
+      run: |
+        python manage.py test
