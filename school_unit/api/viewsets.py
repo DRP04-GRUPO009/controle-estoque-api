@@ -1,12 +1,21 @@
 from rest_framework import generics
 from controle_estoque_api.api.permissions import ApiSchoolUnitPermissions
 from school_unit.api.serializers import SchoolUnitSerializer, SchoolUnitWriteSerializer
+from ..helpers import filters
+from ..helpers.filters import SchoolUnitFilter
+from ..helpers.pagination import StandardPagination
 from ..models import SchoolUnit
+from django_filters import rest_framework as filters
 
 
 class SchoolUnitListAPIView(generics.ListAPIView):
     serializer_class = SchoolUnitSerializer
     permission_classes = [ApiSchoolUnitPermissions]
+    pagination_class = StandardPagination
+    filter_backends = [filters.DjangoFilterBackend]
+    filterset_class = SchoolUnitFilter
+    ordering_fields = ['name', 'created_at']
+    ordering = ['name']
 
     def get_queryset(self):
         user = self.request.user

@@ -13,7 +13,7 @@ class ProductListAPIView(generics.ListAPIView):
     pagination_class = StandardPagination
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = ProductFilter
-    ordering_fields = ['name', 'created_at']  # Campos de ordenação permitidos
+    ordering_fields = ['name', 'created_at']
     ordering = ['name']
     permission_classes = [ReadOnlyUnlessStaff]
 
