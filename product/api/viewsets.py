@@ -2,11 +2,19 @@ from rest_framework import generics
 from product.api import serializers
 from controle_estoque_api.api.permissions import ApiProductPermissions, ReadOnlyUnlessStaff
 from product import models
+from product.helpers.filters import ProductFilter
+from product.helpers.pagination import StandardPagination
+from django_filters import rest_framework as filters
 
 
 class ProductListAPIView(generics.ListAPIView):
     serializer_class = serializers.ProductSerializer
     queryset = models.Product.objects.all()
+    pagination_class = StandardPagination
+    filter_backends = [filters.DjangoFilterBackend]
+    filterset_class = ProductFilter
+    ordering_fields = ['name', 'created_at']  # Campos de ordenação permitidos
+    ordering = ['name']
     permission_classes = [ReadOnlyUnlessStaff]
 
 
