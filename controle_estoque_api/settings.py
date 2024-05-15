@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-xl7fro!1ce)65$4*#ycnsoz3l$(l=5l%iw*zyp388&sln*ltor'
+SECRET_KEY = os.environ.get('CE_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -75,10 +75,10 @@ WSGI_APPLICATION = 'controle_estoque_api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'controle-estoque-db',
+        'NAME': os.environ.get('CE_DB_NAME'),
         'USER': 'root',
-        'PASSWORD': 'th9nrg6U3@',
-        'HOST': '172.17.0.2',
+        'PASSWORD': os.environ.get('CE_DB_PASSWORD'),
+        'HOST': os.environ.get('CE_DB_HOSTNAME'),
         'PORT': '3306',
     }
 }
